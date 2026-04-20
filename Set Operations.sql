@@ -188,3 +188,25 @@ SELECT
 FROM Sales.OrdersArchive
 ORDER BY OrderID;
 
+/*
+=============================================================================
+SET OPERATORS
+=============================================================================
+Combine the results of multiple queries into a single result set.
+
+TYPES:
+- UNION
+- UNION ALL
+- EXCEPT
+- INTERSECT
+
+RULES:
+- Same number of columns, data types, and order of columns.
+- First query controls the column names.
+
+USE CASES:
+- Combine Information         -> UNION / UNION ALL
+- Delta Detection             -> EXCEPT
+- Data Completeness Check     -> EXCEPT
+=============================================================================
+*/
