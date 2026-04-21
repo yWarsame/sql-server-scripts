@@ -206,6 +206,9 @@ WHERE MONTH(OrderDate) = 2;
 
 /* ==============================================================================
    FORMAT()
+   Formatting ist Changing the format of a value from one to another.
+   Date format yyyy-MM-dd, (ISO 8601)
+   Syntax: FORMAT(value, format[, culture])
    ==============================================================================*/
 
 /* TASK 9:
@@ -233,7 +236,7 @@ SELECT
     CreationTime,
     'Day ' + FORMAT(CreationTime, 'ddd MMM') +
     ' Q' + DATENAME(quarter, CreationTime) + ' ' +
-    FORMAT(CreationTime, 'yyyy hh:mm:ss tt') AS CustomFormat
+    FORMAT(CreationTime, 'yyyy hh:mm:ss tt') AS CustomFormat -- tt ist for AM/PM
 FROM Sales.Orders;
 
 /* TASK 11:
@@ -247,6 +250,9 @@ GROUP BY FORMAT(CreationTime, 'MMM yy');
 
 /* ==============================================================================
    CONVERT()
+   6 like 20 Aug 25
+   or 12 like 20250820 
+
 ===============================================================================*/
 
 /* TASK 12:
@@ -263,6 +269,7 @@ FROM Sales.Orders;
 
 /* ==============================================================================
    CAST()
+   Channging the date type from one to another, 
 ===============================================================================*/
 
 /* TASK 13:
@@ -277,9 +284,12 @@ SELECT
     CAST(CreationTime AS DATE) AS [Datetime to Date]
 FROM Sales.Orders;
 
-/* ==============================================================================
-   DATEADD() / DATEDIFF()
-===============================================================================*/
+/* =============================================================================================================================
+   DATEADD() / : Adds or Subtracts a specified time interval to / from a date, and calculates the difference between two dates.
+================================================================================================================================*/
+/* DATEDIFF() / : Calculates the difference between two dates.
+
+*/
 
 /* TASK 14:
    Perform date arithmetic on OrderDate.
@@ -313,6 +323,8 @@ GROUP BY MONTH(OrderDate);
 /* TASK 17:
    Time Gap Analysis: Find the number of days between each order and the previous order.
 */
+
+-- Time Gap Analysis: Find the number of days between each order and the previous order using LAG and DATEDIFF.
 SELECT
     OrderID,
     OrderDate AS CurrentOrderDate,
@@ -321,7 +333,7 @@ SELECT
 FROM Sales.Orders;
 
 /* ==============================================================================
-   ISDATE()
+   ISDATE() : Validates whether a string can be converted to a date.
 ===============================================================================*/
 
 /* TASK 18:
